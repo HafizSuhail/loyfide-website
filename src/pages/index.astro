@@ -25,7 +25,8 @@ import Button from '../components/Button.astro';
       <span class="coming-soon__rule" aria-hidden="true"></span>
 
       <p class="coming-soon__tagline">
-        Thoughtfully made. Launching soon on Amazon&nbsp;India.
+        <span class="coming-soon__tagline-line">Thoughtfully made.</span>
+        <span class="coming-soon__tagline-line">Launching soon on Amazon&nbsp;India.</span>
       </p>
 
       <ul class="coming-soon__links" role="list">
@@ -89,15 +90,21 @@ import Button from '../components/Button.astro';
       }
     }
 
+    // The logo file has ~24% empty white below the wordmark (rows 674–884 of 884).
+    // Hide it in CSS (file untouched) so the gap above the divider matches the gap below.
     &__logo {
       width: 100%;
+      aspect-ratio: 1662 / 674;
+      object-fit: cover;
+      object-position: top;
     }
 
     // Positioned against the wordmark's top-right corner (measured from the logo file:
-    // right edge 80.75%, cap top 60.07%), sized in container units so it scales with the logo.
+    // right edge 80.75% of width, cap top at row 531 of the 674 visible rows = 78.8%),
+    // sized in container units so it scales with the logo.
     &__tm {
       position: absolute;
-      top: 60%;
+      top: 78.8%;
       left: 81.4%;
       font-family: var(--font-body);
       font-size: 3.6cqi;
@@ -110,17 +117,20 @@ import Button from '../components/Button.astro';
       display: block;
       width: var(--space-8);
       height: var(--border-width);
-      margin-block: var(--space-5) var(--space-6);
+      margin-block: var(--space-6);
       background-color: var(--color-accent-strong);
     }
 
     &__tagline {
-      max-width: 28ch;
       font-family: var(--font-heading);
       font-size: var(--font-size-xl);
-      font-style: italic;
+      font-weight: var(--font-weight-regular);
       line-height: var(--line-height-tight);
       color: var(--color-text);
+    }
+
+    &__tagline-line {
+      display: block;
     }
 
     &__links {

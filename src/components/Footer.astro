@@ -4,8 +4,9 @@
 <footer class="site-footer">
   <div class="site-footer__inner">
     <p class="site-footer__line">
-      LOYFIDE™ is a brand of WAFIYA ENTERPRISES, India.
+      LOYFIDE™ is a brand of WAFIYA ENTERPRISES, Kurnool, Andhra Pradesh, India.
     </p>
+    <p class="site-footer__copyright">© 2026 WAFIYA ENTERPRISES</p>
   </div>
 </footer>
 
@@ -22,10 +23,20 @@
       text-align: center;
     }
 
-    &__line {
+    // Muted text on --color-bg: 7.29:1 (passes WCAG AA and AAA)
+    &__line,
+    &__copyright {
       color: var(--color-text-muted);
-      font-size: var(--font-size-xs);
       letter-spacing: 0.02em;
+    }
+
+    &__line {
+      font-size: var(--font-size-sm);
+    }
+
+    &__copyright {
+      margin-top: var(--space-1);
+      font-size: var(--font-size-xs);
     }
   }
 </style>

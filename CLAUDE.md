@@ -92,7 +92,8 @@ Frontend only: there is no backend. Implement directly in the project files rath
 - Look and feel: premium and minimal. Generous white space, large imagery, restrained motion.
 - Contact: support@loyfide.com only. No phone numbers.
 - Instagram: https://instagram.com/loyfide
-- Footer line: "LOYFIDE™ is a brand of WAFIYA ENTERPRISES, India."
+- Footer line: "LOYFIDE™ is a brand of WAFIYA ENTERPRISES, Kurnool, Andhra Pradesh, India."
+  Second, smaller footer line: "© 2026 WAFIYA ENTERPRISES"
 - Full address, where needed (Contact/legal pages only), exactly:
   45/85-A2, Narasimha Reddy Nagar, Revenue Ward No. 45, Kurnool, Andhra Pradesh – 518001
 
