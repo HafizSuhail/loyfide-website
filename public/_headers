@@ -1,0 +1,11 @@
+# Cloudflare response headers (applies to the deployed site only, not local dev)
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+
+# Astro's hashed build assets never change for a given filename: cache for a year
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable

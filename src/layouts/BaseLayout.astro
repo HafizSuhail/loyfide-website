@@ -14,6 +14,8 @@ interface Props {
   ogType?: 'website' | 'article' | 'product';
   /** Set false on pages that show the logo themselves (e.g. coming-soon) */
   showHeader?: boolean;
+  /** Keep the page out of search results (e.g. 404) */
+  noindex?: boolean;
 }
 
 const {
@@ -25,6 +27,7 @@ const {
   ogImageHeight = 884,
   ogType = 'website',
   showHeader = true,
+  noindex = false,
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
@@ -38,7 +41,7 @@ const ogImageUrl = new URL(ogImage, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalUrl} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonicalUrl} />}
     <link rel="sitemap" href="/sitemap.xml" />
     <meta name="theme-color" content="#fbf8f5" />
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
