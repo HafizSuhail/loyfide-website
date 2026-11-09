@@ -1,0 +1,88 @@
+// Brand tokens as CSS custom properties.
+// PLACEHOLDER VALUES: swap in the designer's final palette and fonts here only.
+
+:root {
+  // Palette: raw (placeholders until the designer supplies exact HEX values)
+  --color-rose-100: #f7ece9;
+  --color-rose-200: #efd9d3;
+  --color-rose-400: #d4a59b;
+  --color-rose-600: #a8726a;
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #fbf8f5;
+  --color-neutral-100: #f4eee8;
+  --color-neutral-300: #ddd2c7;
+  --color-charcoal-600: #57524e;
+  --color-charcoal-900: #2a2826;
+
+  // Palette: semantic (components use these)
+  --color-bg: var(--color-neutral-50);
+  --color-surface: var(--color-neutral-0);
+  --color-surface-tint: var(--color-rose-100);
+  --color-text: var(--color-charcoal-900);
+  --color-text-muted: var(--color-charcoal-600);
+  --color-accent: var(--color-rose-400);
+  --color-accent-strong: var(--color-rose-600);
+  --color-border: var(--color-neutral-300);
+  --color-focus: var(--color-charcoal-900);
+  --color-button-bg: var(--color-charcoal-900);
+  --color-button-text: var(--color-neutral-50);
+
+  // Fonts (placeholders until the designer confirms)
+  --font-heading: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+
+  // Fluid type scale
+  --font-size-xs: 0.8125rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+  --font-size-xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --font-size-2xl: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --font-size-3xl: clamp(2.5rem, 1.9rem + 3vw, 4rem);
+
+  --line-height-tight: 1.15;
+  --line-height-base: 1.6;
+  --letter-spacing-wide: 0.12em;
+
+  // Spacing
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  // Layout
+  --container-max: 72rem;
+  --container-gutter: var(--space-4);
+
+  // Radius
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-pill: 999px;
+
+  // Borders
+  --border-width: 1px;
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 3px;
+
+  // Shadows
+  --shadow-sm: 0 1px 2px rgb(42 40 38 / 0.06);
+  --shadow-md: 0 8px 24px rgb(42 40 38 / 0.08);
+
+  // Motion
+  --duration-fast: 150ms;
+  --duration-slow: 600ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  // Tap targets
+  --tap-target-min: 2.75rem; // 44px
+}

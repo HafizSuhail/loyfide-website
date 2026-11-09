@@ -1,0 +1,36 @@
+@use '../abstracts/mixins' as *;
+
+html {
+  color-scheme: light;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  overflow-x: hidden;
+}
+
+// main fills the space between header and footer; its children can use flex: 1 to stretch
+main {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  @include focus-ring;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}

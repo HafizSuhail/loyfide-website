@@ -1,0 +1,6 @@
+// Global styles: loaded once in BaseLayout.
+// Abstracts (tokens aside) emit no CSS; components @use them directly.
+@use 'abstracts/tokens';
+@use 'base/reset';
+@use 'base/base';
+@use 'base/typography';
