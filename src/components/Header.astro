@@ -1,0 +1,41 @@
+---
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/">
+      <img
+        class="site-header__logo"
+        src="/brand/loyfide-logo.jpg"
+        alt="LOYFIDE home"
+        width="1662"
+        height="884"
+      />
+    </a>
+  </div>
+</header>
+
+<style lang="scss">
+  @use '../styles/abstracts/mixins' as *;
+
+  .site-header {
+    &__inner {
+      @include container;
+
+      display: flex;
+      align-items: center;
+      padding-block: var(--space-3);
+    }
+
+    &__brand {
+      display: block;
+      border-radius: var(--radius-sm);
+    }
+
+    &__logo {
+      width: 8rem;
+      // Supplied logo is a JPEG on white; multiply drops the white box on tinted backgrounds.
+      mix-blend-mode: multiply;
+    }
+  }
+</style>
