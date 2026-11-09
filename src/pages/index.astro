@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<BaseLayout
+  title="LOYFIDE™ | Launching soon on Amazon India"
+  description="LOYFIDE™ is thoughtfully made and launching soon on Amazon India. Follow @loyfide on Instagram for updates."
+  showHeader={false}
+>
+  <section class="coming-soon" aria-labelledby="coming-soon-title">
+    <div class="coming-soon__inner">
+      <h1 id="coming-soon-title">
+        <img
+          class="coming-soon__logo"
+          src="/brand/loyfide-logo.jpg"
+          alt="LOYFIDE"
+          width="1662"
+          height="884"
+          fetchpriority="high"
+        />
+      </h1>
+
+      <span class="coming-soon__rule" aria-hidden="true"></span>
+
+      <p class="coming-soon__tagline">
+        Thoughtfully made. Launching soon on Amazon&nbsp;India.
+      </p>
+
+      <ul class="coming-soon__links" role="list">
+        <li>
+          <Button href="https://instagram.com/loyfide" variant="primary">
+            Follow @loyfide on Instagram
+          </Button>
+        </li>
+        <li>
+          <Button href="mailto:support@loyfide.com" variant="secondary">
+            support@loyfide.com
+          </Button>
+        </li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  @use '../styles/abstracts/mixins' as *;
+  @use '../styles/abstracts/breakpoints' as *;
+
+  .coming-soon {
+    @include section-spacing;
+
+    display: grid;
+    flex: 1;
+    place-items: center;
+    background:
+      radial-gradient(ellipse at 50% 0%, var(--color-rose-200), transparent 60%),
+      radial-gradient(ellipse at 50% 100%, var(--color-rose-100), transparent 55%),
+      var(--color-bg);
+
+    &__inner {
+      @include container(40rem);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: coming-soon-in var(--duration-slow) var(--ease-out) both;
+    }
+
+    &__logo {
+      width: min(100%, 22rem);
+      // Supplied logo is a JPEG on white; multiply drops the white box on the tinted background.
+      mix-blend-mode: multiply;
+
+      @include mq('md') {
+        width: 28rem;
+      }
+    }
+
+    &__rule {
+      display: block;
+      width: var(--space-8);
+      height: var(--border-width);
+      margin-block: var(--space-5) var(--space-6);
+      background-color: var(--color-accent-strong);
+    }
+
+    &__tagline {
+      max-width: 28ch;
+      font-family: var(--font-heading);
+      font-size: var(--font-size-xl);
+      font-style: italic;
+      line-height: var(--line-height-tight);
+      color: var(--color-text);
+    }
+
+    &__links {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-3);
+      width: 100%;
+      margin-top: var(--space-7);
+      padding: 0;
+
+      @include mq('sm') {
+        flex-direction: row;
+        justify-content: center;
+        width: auto;
+      }
+
+      :global(.button) {
+        width: 100%;
+      }
+    }
+  }
+
+  @keyframes coming-soon-in {
+    from {
+      opacity: 0;
+      transform: translateY(var(--space-3));
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
