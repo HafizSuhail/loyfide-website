@@ -10,15 +10,16 @@ import Button from '../components/Button.astro';
 >
   <section class="coming-soon" aria-labelledby="coming-soon-title">
     <div class="coming-soon__inner">
-      <h1 id="coming-soon-title">
+      <h1 id="coming-soon-title" class="coming-soon__brand">
         <img
           class="coming-soon__logo"
           src="/brand/loyfide-logo.jpg"
-          alt="LOYFIDE"
+          alt="LOYFIDE™"
           width="1662"
           height="884"
           fetchpriority="high"
         />
+        <span class="coming-soon__tm" aria-hidden="true">™</span>
       </h1>
 
       <span class="coming-soon__rule" aria-hidden="true"></span>
@@ -48,11 +49,14 @@ import Button from '../components/Button.astro';
   @use '../styles/abstracts/breakpoints' as *;
 
   .coming-soon {
-    @include section-spacing;
-
     display: grid;
     flex: 1;
     place-items: center;
+    // Height-aware spacing so short screens (landscape phones, small laptops) still fit
+    padding-block: clamp(var(--space-6), 8svh, var(--space-10));
+    // Opacity-only fade on the element that owns the background, so the logo's
+    // multiply blend (below) still reaches the background through the animation's isolation group.
+    animation: coming-soon-in var(--duration-slow) var(--ease-out) both;
     background:
       radial-gradient(ellipse at 50% 0%, var(--color-rose-200), transparent 60%),
       radial-gradient(ellipse at 50% 100%, var(--color-rose-100), transparent 55%),
@@ -65,17 +69,41 @@ import Button from '../components/Button.astro';
       flex-direction: column;
       align-items: center;
       text-align: center;
-      animation: coming-soon-in var(--duration-slow) var(--ease-out) both;
     }
 
-    &__logo {
-      width: min(100%, 22rem);
+    // Logo width is capped by viewport height too (logo is ~1.88:1)
+    &__brand {
+      position: relative;
+      width: min(100%, 22rem, 75svh);
+      container-type: inline-size;
       // Supplied logo is a JPEG on white; multiply drops the white box on the tinted background.
+      // Set here, not on the img: container-type isolates its children from the backdrop.
       mix-blend-mode: multiply;
 
       @include mq('md') {
-        width: 28rem;
+        width: min(100%, 28rem, 75svh);
       }
+
+      @include mq('xl') {
+        width: min(100%, 34rem, 60svh);
+      }
+    }
+
+    &__logo {
+      width: 100%;
+    }
+
+    // Positioned against the wordmark's top-right corner (measured from the logo file:
+    // right edge 80.75%, cap top 60.07%), sized in container units so it scales with the logo.
+    &__tm {
+      position: absolute;
+      top: 60%;
+      left: 81.4%;
+      font-family: var(--font-body);
+      font-size: 3.6cqi;
+      font-weight: var(--font-weight-medium);
+      line-height: 1;
+      transform: translateY(-0.18em);
     }
 
     &__rule {
@@ -105,9 +133,8 @@ import Button from '../components/Button.astro';
       padding: 0;
 
       @include mq('sm') {
-        flex-direction: row;
+        flex-flow: row wrap;
         justify-content: center;
-        width: auto;
       }
 
       :global(.button) {
@@ -119,12 +146,10 @@ import Button from '../components/Button.astro';
   @keyframes coming-soon-in {
     from {
       opacity: 0;
-      transform: translateY(var(--space-3));
     }
 
     to {
       opacity: 1;
-      transform: none;
     }
   }
 </style>

@@ -14,6 +14,8 @@ const { href, variant = 'primary', class: className, ...attrs } = Astro.props;
 </a>
 
 <style lang="scss">
+  @use '../styles/abstracts/mixins' as *;
+
   .button {
     display: inline-flex;
     align-items: center;
@@ -37,7 +39,7 @@ const { href, variant = 'primary', class: className, ...attrs } = Astro.props;
       background-color: var(--color-button-bg);
       color: var(--color-button-text);
 
-      &:hover {
+      @include hover {
         background-color: var(--color-accent-strong);
       }
     }
@@ -46,7 +48,7 @@ const { href, variant = 'primary', class: className, ...attrs } = Astro.props;
       border-color: var(--color-text);
       color: var(--color-text);
 
-      &:hover {
+      @include hover {
         background-color: var(--color-surface-tint);
       }
     }
