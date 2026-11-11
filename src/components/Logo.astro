@@ -1,0 +1,64 @@
+---
+// Renders the designer's SVG logo cropped to its artwork. The supplied files sit on a padded
+// 398.74 × 211.97 canvas; the crop is done in CSS so the files themselves stay untouched.
+// It fills its parent's width, so size a wrapper element the parent owns (Astro's scoped styles
+// in the parent can't target this component's elements). Height follows the artwork's aspect ratio.
+
+interface Props {
+  variant?: 'full' | 'mark';
+  alt?: string;
+  /** Use for the hero/LCP logo */
+  priority?: boolean;
+}
+
+const { variant = 'full', alt = 'LOYFIDE™', priority = false } = Astro.props;
+
+const CANVAS_WIDTH = 398.74;
+const CANVAS_HEIGHT = 211.97;
+
+// Artwork bounds measured from the SVGs (viewBox units), incl. a 0.5-unit anti-aliasing margin
+const ARTWORK = {
+  full: { src: '/brand/loyfide-logo-black.svg', x: 68.9, y: 54.4, w: 260.95, h: 103.2 },
+  mark: { src: '/brand/loyfide-logomark-black.svg', x: 142.2, y: 57.2, w: 114.35, h: 97.6 },
+};
+
+const { src, x, y, w, h } = ARTWORK[variant];
+const pct = (n: number) => `${((n / w) * 100).toFixed(3)}%`;
+
+// Margins in % resolve against the wrapper's width, so all three values scale with it
+const cropVars = {
+  '--logo-ratio': `${w} / ${h}`,
+  '--logo-scale': pct(CANVAS_WIDTH),
+  '--logo-offset-x': `-${pct(x)}`,
+  '--logo-offset-y': `-${pct(y)}`,
+};
+---
+
+<span class="logo" style={cropVars}>
+  <img
+    class="logo__img"
+    src={src}
+    alt={alt}
+    width={Math.round(CANVAS_WIDTH)}
+    height={Math.round(CANVAS_HEIGHT)}
+    loading={priority ? 'eager' : 'lazy'}
+    fetchpriority={priority ? 'high' : 'auto'}
+    decoding="async"
+  />
+</span>
+
+<style lang="scss">
+  .logo {
+    display: block;
+    aspect-ratio: var(--logo-ratio);
+    overflow: hidden;
+
+    &__img {
+      width: var(--logo-scale);
+      max-width: none;
+      height: auto;
+      margin-top: var(--logo-offset-y);
+      margin-left: var(--logo-offset-x);
+    }
+  }
+</style>

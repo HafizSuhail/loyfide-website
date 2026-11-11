@@ -1,16 +1,11 @@
 ---
+import Logo from './Logo.astro';
 ---
 
 <header class="site-header">
   <div class="site-header__inner">
     <a class="site-header__brand" href="/">
-      <img
-        class="site-header__logo"
-        src="/brand/loyfide-logo.jpg"
-        alt="LOYFIDE home"
-        width="1662"
-        height="884"
-      />
+      <Logo alt="LOYFIDE™ home" />
     </a>
   </div>
 </header>
@@ -24,18 +19,15 @@
 
       display: flex;
       align-items: center;
-      padding-block: var(--space-3);
+      padding-block: var(--space-4);
     }
 
+    // Sizes the Logo inside it (a parent's scoped styles can't reach a child component's elements)
     &__brand {
       display: block;
+      width: 6rem;
+      padding-block: var(--space-1); // keeps the tap target ≥ 44px tall
       border-radius: var(--radius-sm);
-    }
-
-    &__logo {
-      width: 8rem;
-      // Supplied logo is a JPEG on white; multiply drops the white box on tinted backgrounds.
-      mix-blend-mode: multiply;
     }
   }
 </style>
