@@ -3,8 +3,8 @@
 
 :root {
   // Palette: raw (placeholders until the designer supplies exact HEX values)
-  --color-rose-100: #f7ece9;
-  --color-rose-200: #efd9d3;
+  --color-rose-100: #f4e3dd;
+  --color-rose-200: #eacbc2;
   --color-rose-400: #d4a59b;
   --color-rose-600: #a8726a;
   --color-neutral-0: #ffffff;
@@ -18,6 +18,7 @@
   --color-bg: var(--color-neutral-50);
   --color-surface: var(--color-neutral-0);
   --color-surface-tint: var(--color-rose-100);
+  --color-surface-tint-strong: var(--color-rose-200);
   --color-text: var(--color-charcoal-900);
   --color-text-muted: var(--color-charcoal-600);
   --color-accent: var(--color-rose-400);

@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description: string;
-  /** Path under /public, e.g. "/brand/loyfide-logo.jpg" */
+  /** Path under /public, e.g. "/brand/og-image.png" (1200 × 630) */
   ogImage?: string;
   ogImageAlt?: string;
   ogImageWidth?: number;
@@ -21,10 +21,10 @@ interface Props {
 const {
   title,
   description,
-  ogImage = '/brand/loyfide-logo.jpg',
-  ogImageAlt = 'LOYFIDE logo',
-  ogImageWidth = 1662,
-  ogImageHeight = 884,
+  ogImage = '/brand/og-image.png',
+  ogImageAlt = 'LOYFIDE™ logo',
+  ogImageWidth = 1200,
+  ogImageHeight = 630,
   ogType = 'website',
   showHeader = true,
   noindex = false,
@@ -43,7 +43,8 @@ const ogImageUrl = new URL(ogImage, Astro.site);
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonicalUrl} />}
     <link rel="sitemap" href="/sitemap.xml" />
-    <meta name="theme-color" content="#fbf8f5" />
+    <!-- Mobile browser bar colour: matches the top of the page (--color-rose-200; meta can't read CSS vars) -->
+    <meta name="theme-color" content="#eacbc2" />
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="icon" type="image/png" href="/brand/icon-192.png" sizes="192x192" />
     <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />

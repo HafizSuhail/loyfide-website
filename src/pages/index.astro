@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
+import Logo from '../components/Logo.astro';
 ---
 
 <BaseLayout
@@ -11,15 +12,7 @@ import Button from '../components/Button.astro';
   <section class="coming-soon" aria-labelledby="coming-soon-title">
     <div class="coming-soon__inner">
       <h1 id="coming-soon-title" class="coming-soon__brand">
-        <img
-          class="coming-soon__logo"
-          src="/brand/loyfide-logo.jpg"
-          alt="LOYFIDE™"
-          width="1662"
-          height="884"
-          fetchpriority="high"
-        />
-        <span class="coming-soon__tm" aria-hidden="true">™</span>
+        <Logo priority />
       </h1>
 
       <span class="coming-soon__rule" aria-hidden="true"></span>
@@ -55,13 +48,13 @@ import Button from '../components/Button.astro';
     place-items: center;
     // Height-aware spacing so short screens (landscape phones, small laptops) still fit
     padding-block: clamp(var(--space-6), 8svh, var(--space-10));
-    // Opacity-only fade on the element that owns the background, so the logo's
-    // multiply blend (below) still reaches the background through the animation's isolation group.
     animation: coming-soon-in var(--duration-slow) var(--ease-out) both;
+    // Rose base everywhere + glows sized explicitly (not from the box's aspect ratio),
+    // so a tall phone screen gets the same coverage as a wide laptop screen.
     background:
-      radial-gradient(ellipse at 50% 0%, var(--color-rose-200), transparent 60%),
-      radial-gradient(ellipse at 50% 100%, var(--color-rose-100), transparent 55%),
-      var(--color-bg);
+      radial-gradient(150% 55% at 50% 0%, var(--color-surface-tint-strong), transparent),
+      radial-gradient(150% 40% at 50% 100%, var(--color-surface-tint-strong), transparent),
+      var(--color-surface-tint);
 
     &__inner {
       @include container(40rem);
@@ -72,45 +65,17 @@ import Button from '../components/Button.astro';
       text-align: center;
     }
 
-    // Logo width is capped by viewport height too (logo is ~1.88:1)
+    // Logo (cropped artwork, ~2.5:1) is also capped by viewport height for short screens
     &__brand {
-      position: relative;
-      width: min(100%, 22rem, 75svh);
-      container-type: inline-size;
-      // Supplied logo is a JPEG on white; multiply drops the white box on the tinted background.
-      // Set here, not on the img: container-type isolates its children from the backdrop.
-      mix-blend-mode: multiply;
+      width: min(100%, 15rem, 55svh);
 
       @include mq('md') {
-        width: min(100%, 28rem, 75svh);
+        width: min(100%, 18rem, 55svh);
       }
 
       @include mq('xl') {
-        width: min(100%, 34rem, 60svh);
+        width: min(100%, 21rem, 50svh);
       }
-    }
-
-    // The logo file has ~24% empty white below the wordmark (rows 674–884 of 884).
-    // Hide it in CSS (file untouched) so the gap above the divider matches the gap below.
-    &__logo {
-      width: 100%;
-      aspect-ratio: 1662 / 674;
-      object-fit: cover;
-      object-position: top;
-    }
-
-    // Positioned against the wordmark's top-right corner (measured from the logo file:
-    // right edge 80.75% of width, cap top at row 531 of the 674 visible rows = 78.8%),
-    // sized in container units so it scales with the logo.
-    &__tm {
-      position: absolute;
-      top: 78.8%;
-      left: 81.4%;
-      font-family: var(--font-body);
-      font-size: 3.6cqi;
-      font-weight: var(--font-weight-medium);
-      line-height: 1;
-      transform: translateY(-0.18em);
     }
 
     &__rule {
