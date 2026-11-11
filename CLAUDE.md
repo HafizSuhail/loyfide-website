@@ -85,8 +85,11 @@ Frontend only: there is no backend. Implement directly in the project files rath
 ## Brand rules
 - Brand name: LOYFIDE (all caps in logo). Use ™ after the brand name/logo, NEVER ®.
 - Logo: use only the supplied logo files in /public/brand/. Never redraw, recolour, stretch or recreate the logo.
-- Palette: soft, premium dusty rose + warm neutrals + deep charcoal text. Exact HEX values: TO BE PROVIDED by the designer.
-  Until then, use placeholders in abstracts/_tokens.scss only, so they can be swapped in one place.
+- Palette (matches the Instagram palette; defined only in abstracts/_tokens.scss):
+  Charcoal #1F1E1C, Off-white #EAE3D8, Stone #D3C8B7, Graphite #5E5852 (grey text).
+  Product 1 accent, dusty rose: #C9A39E (shapes/lines), #7E544F (text on light).
+  Usage: ~70% off-white/stone, ~25% charcoal/graphite, ≤5% accent. Rose never as a full background.
+  Never put small graphite text on stone (fails AA contrast).
 - Fonts: TO BE CONFIRMED by the designer. Until then use free Google Fonts (one elegant serif for headings,
   one clean sans-serif for body), loaded with font-display: swap. No script/handwritten fonts.
 - Look and feel: premium and minimal. Generous white space, large imagery, restrained motion.
