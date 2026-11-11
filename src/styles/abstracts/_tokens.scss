@@ -1,32 +1,30 @@
-// Brand tokens as CSS custom properties.
-// PLACEHOLDER VALUES: swap in the designer's final palette and fonts here only.
+// Brand tokens as CSS custom properties. Fonts are still placeholders.
 
 :root {
-  // Palette: raw (placeholders until the designer supplies exact HEX values)
-  --color-rose-100: #f6ede8;
-  --color-rose-200: #ecdcd4;
-  --color-rose-400: #d4a59b;
-  --color-rose-600: #a8726a;
-  --color-neutral-0: #ffffff;
-  --color-neutral-50: #fbf8f5;
-  --color-neutral-100: #f4eee8;
-  --color-neutral-300: #ddd2c7;
-  --color-charcoal-600: #57524e;
-  --color-charcoal-900: #2a2826;
+  // Palette: brand (matches the Instagram palette, 11 Nov 2026)
+  // Usage: ~70% off-white/stone, ~25% charcoal/graphite, ≤5% accent. Rose never as a full background.
+  --color-charcoal: #1f1e1c;
+  --color-graphite: #5e5852;
+  --color-off-white: #eae3d8;
+  --color-stone: #d3c8b7;
 
-  // Palette: semantic (components use these)
-  --color-bg: var(--color-neutral-50);
-  --color-surface: var(--color-neutral-0);
-  --color-surface-tint: var(--color-rose-100);
-  --color-surface-tint-strong: var(--color-rose-200);
-  --color-text: var(--color-charcoal-900);
-  --color-text-muted: var(--color-charcoal-600);
-  --color-accent: var(--color-rose-400);
-  --color-accent-strong: var(--color-rose-600);
-  --color-border: var(--color-neutral-300);
-  --color-focus: var(--color-charcoal-900);
-  --color-button-bg: var(--color-charcoal-900);
-  --color-button-text: var(--color-neutral-50);
+  // Product 1 accent (dusty rose): shapes/lines only; use the -text value for rose text
+  --color-rose: #c9a39e;
+  --color-rose-text: #7e544f;
+
+  // Palette: semantic (components use these). Contrast on off-white:
+  // text 13.07, text-muted 5.50, accent-text 5.04. Never put small text-muted on stone (4.25, fails AA).
+  --color-bg: var(--color-off-white);
+  --color-surface-alt: var(--color-stone);
+  --color-text: var(--color-charcoal);
+  --color-text-muted: var(--color-graphite);
+  --color-accent: var(--color-rose);
+  --color-accent-text: var(--color-rose-text);
+  --color-border: var(--color-stone);
+  --color-focus: var(--color-charcoal);
+  --color-button-bg: var(--color-charcoal);
+  --color-button-bg-hover: var(--color-graphite);
+  --color-button-text: var(--color-off-white);
 
   // Fonts (placeholders until the designer confirms)
   --font-heading: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;

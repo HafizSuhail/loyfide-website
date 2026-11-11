@@ -49,12 +49,12 @@ import Logo from '../components/Logo.astro';
     // Height-aware spacing so short screens (landscape phones, small laptops) still fit
     padding-block: clamp(var(--space-6), 8svh, var(--space-10));
     animation: coming-soon-in var(--duration-slow) var(--ease-out) both;
-    // Rose base everywhere + glows sized explicitly (not from the box's aspect ratio),
+    // Off-white base + soft stone glows sized explicitly (not from the box's aspect ratio),
     // so a tall phone screen gets the same coverage as a wide laptop screen.
     background:
-      radial-gradient(150% 55% at 50% 0%, var(--color-surface-tint-strong), transparent),
-      radial-gradient(150% 40% at 50% 100%, var(--color-surface-tint-strong), transparent),
-      var(--color-surface-tint);
+      radial-gradient(150% 55% at 50% 0%, color-mix(in srgb, var(--color-surface-alt) 50%, transparent), transparent),
+      radial-gradient(150% 40% at 50% 100%, color-mix(in srgb, var(--color-surface-alt) 35%, transparent), transparent),
+      var(--color-bg);
 
     &__inner {
       @include container(40rem);
@@ -83,7 +83,7 @@ import Logo from '../components/Logo.astro';
       width: var(--space-8);
       height: var(--border-width);
       margin-block: var(--space-6);
-      background-color: var(--color-accent-strong);
+      background-color: var(--color-accent);
     }
 
     &__tagline {
